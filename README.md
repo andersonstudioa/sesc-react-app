@@ -12,7 +12,7 @@
 
 ## Aula 2 (prática)
 
+- Debugando com console.log()
 - Métodos JavaScript: Map, Filter e Find
 - Estilização inline e externa
 - Protótipo HTML/CSS
-- Debugando com console.log()

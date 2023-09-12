@@ -7,9 +7,45 @@ import dataMembers from '../src/data/data-members.json'
 
 function App() {
 
-  const [tasks] = useState(dataTasks);
+  //Etapa 1
+  const [tasks, setTasks] = useState(dataTasks);
   const [categories] = useState(dataCategories);
   const [members] = useState(dataMembers);
+
+  //Etapa 2
+  const addTask = (title, category, member) => {
+    if(!title || !category || !member) return;
+    const newTask = [
+      ...tasks,
+      {
+        id: Math.floor(Math.random() * 10000),
+        title,
+        category,
+        member,
+        status: "todo"
+      }
+    ]
+
+    setTasks(newTask);
+  }
+
+  //Etapa 3
+  const [currentTask, setCurrentTask] = useState("");
+  const [currentCategory, setCurrentCategory] = useState("");
+  const [currentMember, setCurrentMember] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if(!currentTask || !currentCategory || !currentMember) {
+      alert ("Todos os campos são obrigatórios");
+      return;
+    }
+    //console.log(currentTask, currentCategory, currentMember);
+    addTask(currentTask, currentCategory, currentMember);
+    setCurrentTask("");
+    setCurrentCategory("");
+    setCurrentMember("");
+  }
 
   return (
     <div>
@@ -17,11 +53,12 @@ function App() {
         <div className='container-card'>
           <h1>Cadastrar tarefa</h1>
           <hr />
-          <form>
+          <form onSubmit={handleSubmit}>
             <label>Título</label>
-            <input type='text' name='title' placeholder='Digite o título da tarefa'/>
+            <input type='text' name='title' value={currentTask} onChange={(e) => setCurrentTask(e.target.value)} placeholder='Digite o título da tarefa'/>
             <label>Categoria</label>
-            <select name='category'>
+            <select name='category' value={currentCategory} onChange={(e) => setCurrentCategory(e.target.value)}>
+              <option value="">Selecione uma categoria</option>
               {categories && categories.map((category) => {
                 return (
                   <React.Fragment key={category.id}>
@@ -31,7 +68,8 @@ function App() {
               })}
             </select>
             <label>Membro</label>
-            <select name='category'>
+            <select name='member' value={currentMember} onChange={(e) => setCurrentMember(e.target.value)}>
+              <option value="">Selecione um membro da equipe</option>
               {members && members.map((member) => {
                 return (
                   <React.Fragment key={member.id}>
@@ -40,7 +78,7 @@ function App() {
                 )
               })}
             </select>
-            <button className='btn-register'>Cadastrar</button>
+            <button className='btn-register' type='submit'>Cadastrar</button>
           </form>
         </div>
       </section>

@@ -36,6 +36,7 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    //Validação dos campos
     if(!currentTask || !currentCategory || !currentMember) {
       alert ("Todos os campos são obrigatórios");
       return;

@@ -26,6 +26,11 @@ span, label {
   font-size: 0.725em;
 }
 
+label {
+  color: #302675;
+  font-weight: bold;
+}
+
 hr {
   border: 0;
   border-top: solid 1px #e6e6e6;

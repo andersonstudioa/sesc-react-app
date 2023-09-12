@@ -1,8 +1,18 @@
-# React + Vite
+# Introdução ao Desenvolvimento Front-end com React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Aplicação online
 
-Currently, two official plugins are available:
+[Clique aqui](https://sesc-react-app.vercel.app/) e acesse a aplicação
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Aula 1
+
+- Alguns padrões e paradigmas
+- Introdução ao React
+- Configuração do ambiente
+
+## Aula 2 (prática)
+
+- Métodos JavaScript: Map, Filter e Find
+- Estilização inline e externa
+- Protótipo HTML/CSS
+- Debugando com console.log()

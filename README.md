@@ -14,5 +14,6 @@
 
 - Debugando com console.log()
 - Métodos JavaScript: Map, Filter e Find
+- Trabalhando com useState
 - Estilização inline e externa
 - Protótipo HTML/CSS

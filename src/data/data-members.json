@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Amanda Silva",
-    "profile": "amandassilva"
+    "profile": "amandaessilva"
   },
   {
     "id": 2,
@@ -48,5 +48,10 @@
     "id": 10,
     "name": "Nilson José Teixeira de Souza",
     "profile": "nilsonjts"
+  },
+  {
+    "id": 11,
+    "name": "Carolina Moreira Batatinha de Souza",
+    "profile": "CarolinaBatatinha"
   }
 ]

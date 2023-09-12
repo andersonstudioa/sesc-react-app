@@ -1,0 +1,163 @@
+body, html {
+  padding: 0;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #0f0934;
+  color: #333;
+}
+
+h1 {
+  color: #302675;
+  text-align: center;
+  font-size: 2em;
+}
+
+h2 {
+  margin-top: 0px;
+  font-size: 1em;
+}
+
+p {
+  margin: 5px 0px;
+  font-size: 0.825em;
+}
+
+span, label {
+  font-size: 0.725em;
+}
+
+hr {
+  border: 0;
+  border-top: solid 1px #e6e6e6;
+  margin: 20px 0px;
+}
+
+input, select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 10px;
+  margin: 10px 0px;
+  border: solid 1px #e6e6e6;
+  border-radius: 10px;
+}
+
+.section-main {
+  padding-top: 30px;
+}
+
+.container-card {
+  width: 720px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #FFFFFF;
+  border-radius: 20px;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0px;
+}
+
+.task-content {
+  width: 330px;
+}
+
+.task-img-member {
+  border-radius: 50%;
+  width: 70px;
+}
+
+.task-title {
+  font-weight: bold;
+}
+
+.task-done, .task-doing, .task-todo, .task-category, .task-member {
+  border-radius: 20px;
+  padding: 5px 10px;
+  color: #FFFFFF;
+  margin-right: 8px;
+}
+
+.task-member {
+  color: #868686;
+  border: solid 1px #c9c9c9;
+}
+
+.task-category {
+  background-color: #c9c9c9;
+}
+
+.task-done {
+  background-color: #4ee755;
+}
+
+.task-doing {
+  background-color: #ffbf48;
+}
+
+.task-todo, .btn-register {
+  background-color: #51b4f7;
+}
+
+.btn-start, .btn-close, .btn-delete, .btn-register {
+  padding: 10px 30px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 20px;
+  transition: 0.5s;
+  cursor: pointer;
+  font-size: 0.825em;
+  font-weight: bold;
+}
+
+.btn-register {
+  margin-top: 15px;
+  color: #FFFFFF;
+}
+
+.btn-register:hover {
+  background-color: #70c4fc;
+}
+
+.btn-start {
+  color: #00d8be;
+  border: solid 1.5px #00d8be;
+  background-color: transparent;
+}
+
+.btn-start:hover {
+  color: #FFFFFF;
+  background-color: #17ecd3;
+}
+
+.btn-close {
+  color: #302675;
+  border: solid 1.5px #302675;
+  background-color: transparent;
+}
+
+.btn-close:hover {
+  color: #FFFFFF;
+  background-color: #503eca;
+}
+
+.btn-delete {
+  padding: 10px 14px;
+  color: #d14f6b;
+  border: solid 1.5px #d14f6b;
+  background-color: transparent;
+}
+
+.btn-delete:hover {
+  color: #FFFFFF;
+  background-color: #f86484;
+}
+
+.footer-main {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #FFFFFF;
+  text-align: center;
+}

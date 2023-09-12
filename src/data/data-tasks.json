@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "Criar tela de login do sistema",
+    "category": "UX/UI",
+    "member": "alissoncavalcanti",
+    "status": "done"
+  },
+  {
+    "id": 2,
+    "title": "Criar tela de listagem de tarefas",
+    "category": "UX/UI",
+    "member": "nilsonjts",
+    "status": "todo"
+  },
+  {
+    "id": 3,
+    "title": "Programar tela de login do sistema",
+    "category": "Development",
+    "member": "leufmt",
+    "status": "doing"
+  },
+  {
+    "id": 4,
+    "title": "Programar tela de listagem de tarefas",
+    "category": "Development",
+    "member": "SergioRSanchez",
+    "status": "todo"
+  }
+]

@@ -1,10 +1,12 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import './App.css'
 import dataTasks from '../src/data/data-tasks.json'
 import dataCategories from '../src/data/data-categories.json'
 import dataMembers from '../src/data/data-members.json'
+//import '../src/excercises/class2'
 
 function App() {
+
   const [tasks] = useState(dataTasks);
   const [categories] = useState(dataCategories);
   const [members] = useState(dataMembers);
@@ -22,9 +24,9 @@ function App() {
             <select name='category'>
               {categories && categories.map((category) => {
                 return (
-                  <>
-                    <option key={category.id} value={category.title}>{category.title}</option>
-                  </>
+                  <React.Fragment key={category.id}>
+                    <option value={category.title}>{category.title}</option>
+                  </React.Fragment>
                 )
               })}
             </select>
@@ -32,9 +34,9 @@ function App() {
             <select name='category'>
               {members && members.map((member) => {
                 return (
-                  <>
-                    <option key={members.id} value={member.profile}>{member.name}</option>
-                  </>
+                  <React.Fragment key={member.id}>
+                    <option value={member.profile}>{member.name}</option>
+                  </React.Fragment>
                 )
               })}
             </select>
@@ -48,8 +50,8 @@ function App() {
           <hr />
           {tasks && tasks.map((task) => {
             return (
-              <>
-                <div className='task' key={task.id}>
+              <React.Fragment key={task.id}>
+                <div className='task'>
                   <img src={`https://github.com/${task.member}.png`} className='task-img-member'/>
                   <div className='task-content'>
                     <h2 className='task-title'>{task.title}</h2>
@@ -64,7 +66,7 @@ function App() {
                   </div>
                 </div>
                 <hr />
-              </>
+              </React.Fragment>
             )
           })}
         </div>

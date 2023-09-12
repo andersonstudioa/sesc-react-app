@@ -156,6 +156,7 @@ input, select {
 }
 
 .footer-main {
+  width: 100%;
   margin-top: 40px;
   padding: 20px;
   background-color: #FFFFFF;

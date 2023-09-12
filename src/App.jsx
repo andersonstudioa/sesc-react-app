@@ -59,7 +59,7 @@ function App() {
                     <span className='task-category'>{task.category}</span>
                     <span className={`task-${task.status}`}>{task.status}</span>
                   </div>
-                  <div className='actions'>
+                  <div className='task-actions'>
                     <button className='btn-start'>Iniciar</button>
                     <button className='btn-close'>Finalizar</button>
                     <button className='btn-delete'>x</button>

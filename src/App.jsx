@@ -38,7 +38,9 @@ function App() {
               id='title'
               placeholder='Digite o título'
               value={currentTask}
-              onChange={(event) => setCurrentTask(event.target.value)}
+              onChange={
+                (event) => 
+                setCurrentTask(event.target.value)}
             />
             <label htmlFor='category'>Categoria</label>
             <select name='category' id='category'>

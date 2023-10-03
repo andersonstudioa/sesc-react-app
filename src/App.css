@@ -6,6 +6,10 @@ body, html {
   color: #333;
 }
 
+li {
+  color: #FFF
+}
+
 h1 {
   color: #302675;
   text-align: center;

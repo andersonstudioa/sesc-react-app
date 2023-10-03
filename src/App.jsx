@@ -10,20 +10,39 @@ function App() {
   const [members] = useState(dataMembers);
   const [tasks, setTasks] = useState(dataTasks);
   const [currentTask, setCurrentTask] = useState("");
+  const [currentCategory, setCurrentCategory] = useState("");
+  const [currentMember, setCurrentMember] = useState("");
+
+  const addTask = (title, category, member) => {
+    if(!title || !category || !member) return;
+    const newTaskArray = [
+      ...tasks,
+      {
+        id: Math.floor(Math.random() * 10000),
+        title,
+        category,
+        member,
+        status: "todo"
+      }
+    ];
+    setTasks(newTaskArray);
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault(); //Impede o navegador de recarregar a página
-    
     //Validação dos campos
-    if(!currentTask) {
+    if(!currentTask || !currentCategory || !currentMember) {
       alert("Todos os campos são obrigatórios!");
       return;
-    } else {
-      alert(`Você digitou: ${currentTask}`);
-      return;
     }
+    //Adicionar uma nova tarefa à lista de tarefas
+    addTask(currentTask, currentCategory, currentMember);
+    setCurrentTask("");
+    setCurrentCategory("");
+    setCurrentMember("");
+    alert("Tarefa cadastrada com sucesso!");
   }
-  console.log(currentTask)
+
   return (
     <div>
       <section className='section-main'>
@@ -40,10 +59,19 @@ function App() {
               value={currentTask}
               onChange={
                 (event) => 
-                setCurrentTask(event.target.value)}
+                setCurrentTask(event.target.value)
+              }
             />
             <label htmlFor='category'>Categoria</label>
-            <select name='category' id='category'>
+            <select
+              name='category'
+              id='category'
+              value={currentCategory}
+              onChange={
+                (event) => 
+                  setCurrentCategory(event.target.value)
+              }
+            >
               <option value="">Selecione uma categoria</option>
               {categories && categories.map((category => {
                 return (
@@ -54,7 +82,16 @@ function App() {
               }))}
             </select>
             <label htmlFor='member'>Membros</label>
-            <select name='member' id='member'>
+            <select
+              name='member'
+              id='member'
+              value={currentMember}
+              onChange={
+                (event) => {
+                setCurrentMember(event.target.value)
+                }
+              }
+            >
               <option value="">Selecione um membro da equipe</option>
               {members && members.map((member) => {
                 return (

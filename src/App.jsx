@@ -34,6 +34,28 @@ function App() {
     setTasks(newTask);
   }
 
+  const deleteTask = (id) => {
+    const newTasks = [...tasks];
+    const filteredTasks = newTasks.filter(task => task.id !== id ? task : null)
+    setTasks(filteredTasks);
+  }
+
+  const startTask = (id) => {
+    const newTasks = [...tasks];
+    newTasks.map((task) => 
+      task.id === id ? (task.status = 'todo') : task
+    );
+    setTasks(newTasks);
+  }
+
+  const closeTask = (id) => {
+    const newTasks = [...tasks];
+    newTasks.map((task) => 
+      task.id === id ? (task.status = 'done') : task
+    );
+    setTasks(newTasks);
+  }
+
   //Etapa 3
 /*   const [currentTask, setCurrentTask] = useState("");
   const [currentCategory, setCurrentCategory] = useState("");
@@ -56,7 +78,12 @@ function App() {
   return (
     <div>
       <TaskForm addTask={addTask} />
-      <TaskList tasks={tasks} />
+      <TaskList
+        tasks={tasks}
+        deleteTask={deleteTask}
+        startTask={startTask}
+        closeTask={closeTask}
+      />
       <Footer />
       {/* Mover para src/components/tasks/task-form/index.jsx */}
 {/*       <section className='section-main'>

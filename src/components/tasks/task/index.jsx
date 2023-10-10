@@ -1,4 +1,4 @@
-function Task({member, title, category, status}) {
+function Task({id, member, title, category, status, deleteTask, startTask, closeTask}) {
   return (
     <>
       <div className='task'>
@@ -10,9 +10,9 @@ function Task({member, title, category, status}) {
           <span className={`task-${status}`}>{status}</span>
         </div>
         <div className='task-actions'>
-          <button className='btn-start'>Iniciar</button>
-          <button className='btn-close'>Finalizar</button>
-          <button className='btn-delete'>x</button>
+          <button className='btn-start' onClick={() => startTask(id)}>Iniciar</button>
+          <button className='btn-close' onClick={() => closeTask(id)}>Finalizar</button>
+          <button className='btn-delete' onClick={() => deleteTask(id)}>x</button>
         </div>
       </div>
       <hr />

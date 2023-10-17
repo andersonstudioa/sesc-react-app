@@ -1,20 +1,25 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import './App.css'
 import dataTasks from '../src/data/data-tasks.json'
-import dataCategories from '../src/data/data-categories.json'
-import dataMembers from '../src/data/data-members.json'
+/* import dataCategories from '../src/data/data-categories.json'
+import dataMembers from '../src/data/data-members.json' */
+import { Footer, TaskForm, TaskList } from './components'
 //import '../src/excercises/class2'
 
 function App() {
 
   //Etapa 1
   const [tasks, setTasks] = useState(dataTasks);
-  const [categories] = useState(dataCategories);
-  const [members] = useState(dataMembers);
+/*   const [categories] = useState(dataCategories);
+  const [members] = useState(dataMembers); */
 
   //Etapa 2
   const addTask = (title, category, member) => {
-    if(!title || !category || !member) return;
+    if(!title || !category || !member) {
+      alert ("Todos os campos são obrigatórios");
+      return;
+    }
+
     const newTask = [
       ...tasks,
       {
@@ -29,8 +34,30 @@ function App() {
     setTasks(newTask);
   }
 
+  const deleteTask = (id) => {
+    const newTasks = [...tasks];
+    const filteredTasks = newTasks.filter(task => task.id !== id ? task : null)
+    setTasks(filteredTasks);
+  }
+
+  const startTask = (id) => {
+    const newTasks = [...tasks];
+    newTasks.map((task) => 
+      task.id === id ? (task.status = 'todo') : task
+    );
+    setTasks(newTasks);
+  }
+
+  const closeTask = (id) => {
+    const newTasks = [...tasks];
+    newTasks.map((task) => 
+      task.id === id ? (task.status = 'done') : task
+    );
+    setTasks(newTasks);
+  }
+
   //Etapa 3
-  const [currentTask, setCurrentTask] = useState("");
+/*   const [currentTask, setCurrentTask] = useState("");
   const [currentCategory, setCurrentCategory] = useState("");
   const [currentMember, setCurrentMember] = useState("");
 
@@ -46,11 +73,20 @@ function App() {
     setCurrentTask("");
     setCurrentCategory("");
     setCurrentMember("");
-  }
+  } */
 
   return (
     <div>
-      <section className='section-main'>
+      <TaskForm addTask={addTask} />
+      <TaskList
+        tasks={tasks}
+        deleteTask={deleteTask}
+        startTask={startTask}
+        closeTask={closeTask}
+      />
+      <Footer />
+      {/* Mover para src/components/tasks/task-form/index.jsx */}
+{/*       <section className='section-main'>
         <div className='container-card'>
           <h1>Cadastrar tarefa</h1>
           <hr />
@@ -82,8 +118,8 @@ function App() {
             <button className='btn-register' type='submit'>Cadastrar</button>
           </form>
         </div>
-      </section>
-      <section className='section-main'>
+      </section> */}
+      {/* <section className='section-main'>
         <div className='container-card'>
           <h1>Lista de tarefas</h1>
           <hr />
@@ -109,11 +145,7 @@ function App() {
             )
           })}
         </div>
-      </section>
-      <footer className='footer-main'>
-        <p><strong>Introdução ao Desenvolvimento Front-end com React</strong></p>
-        <p><em>Professor: Anderson Carvalho</em></p>
-      </footer>
+      </section> */}
     </div>
   )
 }

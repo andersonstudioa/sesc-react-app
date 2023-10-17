@@ -1,6 +1,7 @@
 import Task from "../task";
+import './style.css';
 
-function TasksList( {tasks} ) {
+function TasksList( {tasks, startTask, closeTask, deleteTask} ) {
   return (
     <section className='section-main'>
       <div className='container-card'>
@@ -17,6 +18,9 @@ function TasksList( {tasks} ) {
               member={task.member}
               category={task.category}
               status={task.status}
+              startTask={startTask}
+              closeTask={closeTask}
+              deleteTask={deleteTask}
             />
           )
         })}

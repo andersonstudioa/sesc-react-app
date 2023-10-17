@@ -1,6 +1,7 @@
 import dataCategories from '../../../data/data-categories.json';
 import dataMembers from '../../../data/data-members.json';
 import React, { useState } from 'react'
+import './style.css'
 
 function TaskForm ( {addTask} ) {
   const [categories] = useState(dataCategories);

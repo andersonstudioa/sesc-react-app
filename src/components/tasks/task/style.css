@@ -1,0 +1,54 @@
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0px;
+  }
+  
+  .task-content {
+    width: 100%;
+    max-width: 330px;
+    padding: 10px;
+  }
+  
+  .task-actions {
+    padding: 10px 0px;
+  }
+  
+  .task-img-member {
+    border-radius: 50%;
+    width: 70px;
+  }
+  
+  .task-title {
+    font-weight: bold;
+  }
+  
+  .task-done, .task-doing, .task-todo, .task-category, .task-member {
+    border-radius: 20px;
+    padding: 5px 10px;
+    color: #FFFFFF;
+    margin-right: 8px;
+  }
+  
+  .task-member {
+    color: #868686;
+    border: solid 1px #c9c9c9;
+  }
+  
+  .task-category {
+    background-color: #c9c9c9;
+  }
+  
+  .task-done {
+    background-color: #4ee755;
+  }
+  
+  .task-doing {
+    background-color: #ffbf48;
+  }
+  
+  .task-todo, .btn-register {
+    background-color: #51b4f7;
+  }

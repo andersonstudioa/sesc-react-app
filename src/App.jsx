@@ -22,10 +22,37 @@ function App() {
     setTasks(newTaskArray);
   }
 
+  const startTask = (id) => {
+    const newTasks = [...tasks];
+    newTasks.map((task) => 
+      task.id === id ? (task.status = 'doing') : task
+    );
+    setTasks(newTasks);
+  }
+
+  const closeTask = (id) => {
+    const newTasks = [...tasks];
+    newTasks.map((task) => 
+      task.id === id ? (task.status = 'done') : task
+    );
+    setTasks(newTasks);
+  }
+
+  const deleteTask = (id) => {
+    const newTasks = [...tasks];
+    const filteredTasks = newTasks.filter(task => task.id !== id ? task : null);
+    setTasks(filteredTasks);
+  }
+
   return (
     <div>
       <TaskForm addTask={addTask} />
-      <TasksList tasks={tasks} />
+      <TasksList 
+        tasks={tasks}
+        startTask={startTask}
+        closeTask={closeTask}
+        deleteTask={deleteTask}
+      />
       <Footer />
     </div>
   )

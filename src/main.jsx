@@ -6,11 +6,15 @@ import {
   RouterProvider,
 } from "react-router-dom"
 
-import { ProjectsPage, TasksPage } from './pages/inedx.js'
+import { HomePage, ProjectsPage, TasksPage } from './pages'
 
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <HomePage />,
+  },
+  {
+    path: "/tasks",
     element: <TasksPage />,
   },
   {

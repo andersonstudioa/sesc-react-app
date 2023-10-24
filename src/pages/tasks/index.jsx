@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import './App.css'
-import dataTasks from '../src/data/data-tasks.json'
-import { Footer, TaskForm, TasksList } from './components'
+import '../../App.css'
+import dataTasks from '../../data/data-tasks.json'
+import { Footer, TaskForm, TasksList } from '../../components'
 
-function App() {
+function TasksPage() {
   
   const [tasks, setTasks] = useState(dataTasks);
 
@@ -58,4 +58,4 @@ function App() {
   )
 }
 
-export default App
+export default TasksPage

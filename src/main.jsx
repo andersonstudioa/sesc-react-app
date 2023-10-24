@@ -1,9 +1,26 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom"
+
+import { ProjectsPage, TasksPage } from './pages/inedx.js'
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <TasksPage />,
+  },
+  {
+    path: "/projects",
+    element: <ProjectsPage />,
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>,
 )

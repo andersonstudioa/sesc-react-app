@@ -18,19 +18,32 @@
 - Estilização inline e externa
 
 ## Aula 3
+
 - Início do protótipo HTML/CSS
 
 ## Aula 4
+
 - Finalização do protótipo HTML/CSS
 - Popular campos <select> com conteúdo de arquivos JSON
 
 ## Aula 5
+
 - Adição de tarefa na lista de tarefas
 - Exercícios de componentes
 
 ## Aula 6
+
 - Início da componentização do App.jsx
 
 ## Aula 7
+
 - Finalização da componentização
 - Métodos para Iniciar, Finalizar e Excluir tarefas
+- Instalação do Material UI
+
+## Aula 8
+
+- Instalação do React Router
+- Nova estrutura de pastas para rederiação de Páginas
+- Configuração de rotas básicas com React Router
+- Início da prototipação da página Home

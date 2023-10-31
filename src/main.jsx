@@ -7,7 +7,6 @@ import {
 } from "react-router-dom"
 
 import { HomePage, ProjectsPage, TasksPage } from './pages'
-import { LeftMenu } from './components';
 
 const router = createBrowserRouter([
   {
@@ -26,7 +25,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <LeftMenu />
     <RouterProvider router={router} />
   </React.StrictMode>
 )

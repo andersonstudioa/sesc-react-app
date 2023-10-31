@@ -71,6 +71,7 @@ input, select {
   cursor: pointer;
   font-size: 0.825em;
   font-weight: bold;
+  text-decoration: none;
 }
 
 .btn-register {

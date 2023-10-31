@@ -47,3 +47,9 @@
 - Nova estrutura de pastas para rederiação de Páginas
 - Configuração de rotas básicas com React Router
 - Início da prototipação da página Home
+
+## Aula 9
+
+- Finalização da prototipação da página Home
+- Arquivos Json para base de projetos
+- Início do desenvolvimento do formulário de projetos

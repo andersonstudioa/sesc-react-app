@@ -41,7 +41,7 @@ hr {
   margin: 20px 0px;
 }
 
-input, select {
+input, select, textarea {
   width: 100%;
   box-sizing: border-box;
   padding: 12px 10px;

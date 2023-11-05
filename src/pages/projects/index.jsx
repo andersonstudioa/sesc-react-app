@@ -1,8 +1,11 @@
+import { Footer, ProjectForm } from '../../components'
+
 function ProjectsPage() {
   return (
-    <div>
-      <h1 style={{color: 'white'}}>Listagem de projetos</h1>
-    </div>
+    <>
+      <ProjectForm />
+      <Footer />
+    </>
   )
 }
 

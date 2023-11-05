@@ -1,15 +1,15 @@
-import dataCategories from '../../../data/data-categories.json';
-import dataMembers from '../../../data/data-members.json';
-import dataProjects from '../../../data/data-projects.json';
+// import dataCategories from '../../../data/data-categories.json';
+// import dataMembers from '../../../data/data-members.json';
+// import dataProjects from '../../../data/data-projects.json';
 import dataTeams from '../../../data/data-teams.json';
 import React, { useState } from 'react'
 import './style.css'
 
 function ProjectForm ( {addProject} ) {
-  const [projects] = useState(dataProjects);
+
+  // const [projects] = useState(dataProjects);
   const [teams] = useState(dataTeams);
-  const [categories] = useState(dataCategories);
-  const [members] = useState(dataMembers);
+  // const [members] = useState(dataMembers);
   const [currentTitle, setCurrentTitle] = useState("");
   const [currentDescription, setCurrentDescription] = useState("");
   const [currentStartDate, setCurrentStartDate] = useState("");
@@ -62,7 +62,7 @@ function ProjectForm ( {addProject} ) {
   return (
     <section className='section-main'>
       <div className='container-card'>
-        <h1>Cadastrar tarefa</h1>
+        <h1>Cadastrar projeto</h1>
         <hr />
         <form onSubmit={handleSubmit}>
           <label htmlFor='title'>Título</label>
@@ -77,46 +77,36 @@ function ProjectForm ( {addProject} ) {
               setCurrentTitle(event.target.value)
             }
           />
-          <label htmlFor='description'>Categoria</label>
-          {/* TODO: Finalizar formulário */}
-          {/* <select
+          <label htmlFor='description'>Descrição</label>
+          <textarea
             name='description'
             id='description'
+            placeholder='Digite a descrição do projeto'
             value={currentDescription}
             onChange={
               (event) => 
-                setCurrentDescription(event.target.value)
+              setCurrentDescription(event.target.value)
+            }
+          />
+          <label htmlFor='team'>Equipe</label>
+          <select
+            name='team'
+            id='team'
+            value={currentTeam}
+            onChange={
+              (event) => 
+                setCurrentTeam(event.target.value)
             }
           >
-            <option value="">Selecione uma categoria</option>
-            {categories && categories.map((category => {
+            <option value="">Selecione uma equipe</option>
+            {teams && teams.map((team => {
               return (
-                <React.Fragment key={category.id}>
-                  <option value={category.title}>{category.title}</option>
+                <React.Fragment key={team.id}>
+                  <option value={team.id}>{team.name}</option>
                 </React.Fragment>
               )
             }))}
           </select>
-          <label htmlFor='member'>Membros</label>
-          <select
-            name='member'
-            id='member'
-            value={currentMember}
-            onChange={
-              (event) => {
-              setCurrentMember(event.target.value)
-              }
-            }
-          >
-            <option value="">Selecione um membro da equipe</option>
-            {members && members.map((member) => {
-              return (
-                <React.Fragment key={member.id}>
-                  <option value={member.profile}>{member.name}</option>
-                </React.Fragment>
-              )
-            })}
-          </select> */}
           <button className='btn-register' type='submit'>
             Cadastrar
           </button>
@@ -126,4 +116,4 @@ function ProjectForm ( {addProject} ) {
   )
 }
 
-export default TaskForm;
+export default ProjectForm;

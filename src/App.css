@@ -147,6 +147,7 @@ input, select {
   color: #302675;
   border: solid 1.5px #302675;
   background-color: transparent;
+  text-decoration: none;
 }
 
 .btn-close:hover {

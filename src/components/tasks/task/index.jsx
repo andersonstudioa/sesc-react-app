@@ -1,8 +1,19 @@
-function Task({id, member, title, category, status, deleteTask, startTask, closeTask}) {
+import './style.css'
+
+function Task( {
+  id,
+  title,
+  member,
+  category,
+  status,
+  startTask,
+  closeTask,
+  deleteTask
+  } ) {
   return (
     <>
       <div className='task'>
-        <img src={`https://github.com/${member}.png`} className='task-img-member'/>
+        <img src={`https://github.com/${member}.png`} className='task-img-member' />
         <div className='task-content'>
           <h2 className='task-title'>{title}</h2>
           <span className='task-member'>{member}</span>

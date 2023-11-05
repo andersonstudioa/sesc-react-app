@@ -6,6 +6,10 @@ body, html {
   color: #333;
 }
 
+li {
+  color: #FFF
+}
+
 h1 {
   color: #302675;
   text-align: center;
@@ -121,6 +125,7 @@ input, select {
   cursor: pointer;
   font-size: 0.825em;
   font-weight: bold;
+  text-decoration: none;
 }
 
 .btn-register {
@@ -129,7 +134,7 @@ input, select {
 }
 
 .btn-register:hover {
-  background-color: #70c4fc;
+  background-color: #1eff00;
 }
 
 .btn-start {

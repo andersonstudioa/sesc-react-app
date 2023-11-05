@@ -1,28 +1,62 @@
 import dataCategories from '../../../data/data-categories.json';
 import dataMembers from '../../../data/data-members.json';
+import dataProjects from '../../../data/data-projects.json';
+import dataTeams from '../../../data/data-teams.json';
 import React, { useState } from 'react'
 import './style.css'
 
-function TaskForm ( {addTask} ) {
+function ProjectForm ( {addProject} ) {
+  const [projects] = useState(dataProjects);
+  const [teams] = useState(dataTeams);
   const [categories] = useState(dataCategories);
   const [members] = useState(dataMembers);
-  const [currentTask, setCurrentTask] = useState("");
-  const [currentCategory, setCurrentCategory] = useState("");
-  const [currentMember, setCurrentMember] = useState("");
+  const [currentTitle, setCurrentTitle] = useState("");
+  const [currentDescription, setCurrentDescription] = useState("");
+  const [currentStartDate, setCurrentStartDate] = useState("");
+  const [currentDeadline, setCurrentDeadline] = useState("");
+  const [currentEndDate, setCurrentEndDate] = useState("");
+  const [currentClient, setCurrentClient] = useState("");
+  const [currentStatus, setCurrentStatus] = useState("");
+  const [currentTeam, setCurrentTeam] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault(); //Impede o navegador de recarregar a página
     //Validação dos campos
-    if(!currentTask || !currentCategory || !currentMember) {
+    if(
+        !currentTitle || 
+        !currentDescription || 
+        !currentStartDate ||
+        !currentDeadline ||
+        !currentEndDate ||
+        !currentClient ||
+        !currentStatus ||
+        !currentTeam
+    ) {
       alert("Todos os campos são obrigatórios!");
       return;
     }
     //Adicionar uma nova tarefa à lista de tarefas
-    addTask(currentTask, currentCategory, currentMember);
-    setCurrentTask("");
-    setCurrentCategory("");
-    setCurrentMember("");
-    alert("Tarefa cadastrada com sucesso!");
+    addProject(
+        currentTitle,
+        currentDescription,
+        currentStartDate,
+        currentDeadline,
+        currentEndDate,
+        currentClient,
+        currentStatus,
+        currentTeam
+    );
+    setCurrentTitle("");
+    setCurrentDescription("");
+    setCurrentStartDate("");
+    setCurrentDeadline("");
+    setCurrentEndDate("");
+    setCurrentClient("");
+    setCurrentTitle("");
+    setCurrentStatus("");
+    setCurrentTeam("");
+
+    alert("Projeto cadastrado com sucesso!");
   }
 
   return (
@@ -37,20 +71,21 @@ function TaskForm ( {addTask} ) {
             name='title'
             id='title'
             placeholder='Digite o título'
-            value={currentTask}
+            value={currentTitle}
             onChange={
               (event) => 
-              setCurrentTask(event.target.value)
+              setCurrentTitle(event.target.value)
             }
           />
-          <label htmlFor='category'>Categoria</label>
-          <select
-            name='category'
-            id='category'
-            value={currentCategory}
+          <label htmlFor='description'>Categoria</label>
+          {/* TODO: Finalizar formulário */}
+          {/* <select
+            name='description'
+            id='description'
+            value={currentDescription}
             onChange={
               (event) => 
-                setCurrentCategory(event.target.value)
+                setCurrentDescription(event.target.value)
             }
           >
             <option value="">Selecione uma categoria</option>
@@ -81,7 +116,7 @@ function TaskForm ( {addTask} ) {
                 </React.Fragment>
               )
             })}
-          </select>
+          </select> */}
           <button className='btn-register' type='submit'>
             Cadastrar
           </button>

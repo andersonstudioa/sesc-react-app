@@ -1,58 +1,68 @@
-//Imprimindo algo no Console
-console.log("Meu primeiro debug");
+//const [count, setCount] = useState(0)
 
-//Imprimindo variável no Console
-const myString = "Meu segundo debug";
-console.log(myString);
+  //console.log("Meu primeiro debug");
 
-//Array unidimensional
-const arrayFruits = ["Laranja", "Caja", "Abacaxi", "Manga", "Melancia", "Pêra"];
-console.log(arrayFruits);
+  const myString = "Minha variável";
+  
+  //console.log(myString);
 
-//Imprimir individualmente cada item do array
-arrayFruits.map((fruit) => {
-  return (
-    console.log(fruit)
-  )
-});
+  const arrayFruits = [
+    "Laranja",
+    "Caja",
+    "Abacaxi",
+    "Abacate",
+    "Manga",
+    "Melancia",
+    "Pera"
+  ];
 
-//Array de objetos
-const arrayObjects = [
-  {
-    id: 1,
-    name: "José da Silva",
-    age: 35
+  //console.log(arrayFruits);
+  //console.log("=========================")
+  // arrayFruits.map((fruit) => {
+  //   return (
+  //     console.log(fruit)
+  //   )
+  // });
 
-  },
-  {
-    id: 2,
-    name: "Maria Oliveira",
-    age: 43
-  },
-  {
-    id: 3,
-    name: "João de Souza",
-    age: 19
-  }
-];
+  const arrayObjects = [
+    {
+      id: 1,
+      name: "José da Silva",
+      age: 15
+    },
+    {
+      id: 2,
+      name: "Maria Oliveira",
+      age: 43
+    },
+    {
+      id: 3,
+      name: "João de Souza",
+      age: 19
+    }
+  ];
 
-arrayObjects.map((person) => {
-  return (
-    console.log(`${person.name} tem ${person.age} anos`)
-  )
-});
+  // arrayObjects.map((person) => {
+  //   return (
+  //     console.log(`${person.name} tem ${person.age} anos`)
+  //   )
+  // });
 
-//Encontrar UMA fruta pela quantidade de caracteres
-const qtd = 4;
-const fruitsResultFind = arrayFruits.find((fruit) => fruit.length === qtd);
-console.log(fruitsResultFind);
+  const qtd = 4;
 
-//Filtrar MÚLTIPLAS frutas pela quantidade de caracteres
-const fruitsResultFilter = arrayFruits.filter((fruit) => fruit.length === qtd);
-console.log(fruitsResultFilter);
+  //Fruta com 4 caracteres
+  const fruitResultFind = arrayFruits.find(
+    (currentFruit) => currentFruit.length === qtd);
+  //console.log(fruitResultFind);
 
+  //Filtrar MÚLTIPLAS frutas pela quantidade de caracteres
+  const fruitsResultFilter = arrayFruits.filter(
+    (currentFruit) => currentFruit.length === qtd);
+  //console.log(fruitsResultFilter);
 
-//Filtrar itens com que contenham uma substring
-const search = "an";
-const results = arrayFruits.filter((fruit) => fruit.includes(search));
-console.log(results);
+  //Filtrar itens com determinada substring
+  const search = "Abaca";
+  const results = arrayFruits.filter(
+    //(currentFruit) => currentFruit.includes(search));
+    (currentFruit) => currentFruit.startsWith(search));
+  console.log(results);

@@ -8,9 +8,11 @@ import {
   Typography,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import { Footer } from "../../components";
 
 function HomePage() {
   return (
+    <>
     <Container
       maxWidth="md"
       sx={{
@@ -136,6 +138,8 @@ function HomePage() {
         
       </Grid>
     </Container>
+    <Footer />
+    </>
   );
 }
 

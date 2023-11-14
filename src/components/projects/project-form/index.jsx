@@ -10,9 +10,9 @@ function ProjectForm({ addProject }) {
   const [teams] = useState(dataTeams);
   const [currentTitle, setCurrentTitle] = useState("");
   const [currentDescription, setCurrentDescription] = useState("");
-  const [currentStartDate, setCurrentStartDate] = useState("");
-  const [currentDeadline, setCurrentDeadline] = useState("");
-  const [currentEndDate, setCurrentEndDate] = useState("");
+  const [currentStartDate, setCurrentStartDate] = useState(null);
+  const [currentDeadline, setCurrentDeadline] = useState(null);
+  const [currentEndDate, setCurrentEndDate] = useState(null);
   const [currentClient, setCurrentClient] = useState("");
   const [currentStatus, setCurrentStatus] = useState("");
   const [currentTeam, setCurrentTeam] = useState("");
@@ -24,7 +24,6 @@ function ProjectForm({ addProject }) {
       !currentTitle ||
       !currentDescription ||
       !currentStartDate ||
-      !currentDeadline ||
       !currentEndDate ||
       !currentClient ||
       !currentStatus ||
@@ -46,9 +45,9 @@ function ProjectForm({ addProject }) {
     );
     setCurrentTitle("");
     setCurrentDescription("");
-    setCurrentStartDate("");
-    setCurrentDeadline("");
-    setCurrentEndDate("");
+    setCurrentStartDate(null);
+    setCurrentDeadline(null);
+    setCurrentEndDate(null);
     setCurrentClient("");
     setCurrentTitle("");
     setCurrentStatus("");
@@ -62,7 +61,7 @@ function ProjectForm({ addProject }) {
       <div className="container-card">
         <Box
           sx={{
-            "& .MuiTextField-root": { marginY: 1, width: "100%" },
+            "& .MuiTextField-root": { marginY: 1 },
           }}
         >
           <h1>Cadastrar projeto</h1>
@@ -77,6 +76,7 @@ function ProjectForm({ addProject }) {
               onChange={(event) => setCurrentTitle(event.target.value)}
             />
             <TextField
+              fullWidth
               name="description"
               id="description"
               placeholder="Digite a descrição do projeto"
@@ -113,14 +113,55 @@ function ProjectForm({ addProject }) {
                   );
                 })}
             </TextField>
-            <div>
+            <Box sx={{
+              display: 'flex',
+              gap: {
+                xs: '0',
+                sm: '0',
+                md: '1em',
+                lg: '1em',
+                xl: '1em',
+              },
+              flexDirection: {
+                xs: 'column',
+                sm: 'column',
+                md: 'row',
+                lg: 'row',
+                xl: 'row',
+              }
+              }}>
               <LocalizationProvider
                 adapterLocale={ptBR}
                 dateAdapter={AdapterDateFns}
               >
-                <DatePicker />
+                <DatePicker
+                  id="startDate"
+                  label="Data de início"
+                  value={currentStartDate}
+                />
               </LocalizationProvider>
-            </div>
+              <LocalizationProvider
+                adapterLocale={ptBR}
+                dateAdapter={AdapterDateFns}
+              >
+                <DatePicker
+                  id="endDate"
+                  label="Data de finalização"
+                  value={currentEndDate}
+                />
+              </LocalizationProvider>
+              <LocalizationProvider
+                adapterLocale={ptBR}
+                dateAdapter={AdapterDateFns}
+              >
+                <DatePicker
+                  id="deadline"
+                  label="Previsão de entrega"
+                  value={currentDeadline}
+                />
+              </LocalizationProvider>
+            </Box>
+            <hr />
             <button className="btn-register" type="submit">
               Cadastrar
             </button>

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import '../../App.css'
 import dataTasks from '../../data/data-tasks.json'
-import { Footer, TaskForm, TasksList } from '../../components'
+import { Footer, Header, TaskForm, TasksList } from '../../components'
 
 function TasksPage() {
   
@@ -46,6 +46,7 @@ function TasksPage() {
 
   return (
     <div>
+      <Header />
       <TaskForm addTask={addTask} />
       <TasksList 
         tasks={tasks}

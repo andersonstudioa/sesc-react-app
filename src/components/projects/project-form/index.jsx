@@ -1,5 +1,10 @@
 import dataTeams from '../../../data/data-teams.json';
 import React, { useState } from 'react'
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { ptBR } from 'date-fns/locale';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { TextField } from '@mui/material';
 
 function ProjectForm ( {addProject} ) {
   const [teams] = useState(dataTeams);
@@ -58,12 +63,11 @@ function ProjectForm ( {addProject} ) {
         <h1>Cadastrar projeto</h1>
         <hr />
         <form onSubmit={handleSubmit}>
-          <label htmlFor='title'>Título</label>
-          <input
-            type='text'
-            name='title'
-            id='title'
-            placeholder='Digite o título'
+          <TextField 
+            fullWidth
+            id="outlined-basic"
+            label="Título"
+            variant="outlined"
             value={currentTitle}
             onChange={
               (event) => 
@@ -81,12 +85,11 @@ function ProjectForm ( {addProject} ) {
               setCurrentDescription(event.target.value)
             }
           />
-          <label htmlFor='client'>Clinte</label>
-          <input
-            type='text'
-            name='client'
-            id='client'
-            placeholder='Digite o nome do cliente'
+          <TextField 
+            fullWidth
+            id="outlined-basic"
+            label="Cliente"
+            variant="outlined"
             value={currentClient}
             onChange={
               (event) => 
@@ -112,6 +115,11 @@ function ProjectForm ( {addProject} ) {
               )
             }))}
           </select>
+          <div>
+            <LocalizationProvider adapterLocale={ptBR} dateAdapter={AdapterDateFns}>
+              <DatePicker />
+            </LocalizationProvider>
+          </div>
           <button className='btn-register' type='submit'>
             Cadastrar
           </button>

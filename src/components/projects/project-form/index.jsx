@@ -14,7 +14,7 @@ function ProjectForm({ addProject }) {
   const [currentDeadline, setCurrentDeadline] = useState(null);
   const [currentEndDate, setCurrentEndDate] = useState(null);
   const [currentClient, setCurrentClient] = useState("");
-  const [currentStatus, setCurrentStatus] = useState("");
+  const [currentStatus, setCurrentStatus] = useState("todo");
   const [currentTeam, setCurrentTeam] = useState("");
 
   const handleSubmit = (event) => {
@@ -23,10 +23,8 @@ function ProjectForm({ addProject }) {
     if (
       !currentTitle ||
       !currentDescription ||
-      !currentStartDate ||
-      !currentEndDate ||
+      !currentDeadline ||
       !currentClient ||
-      !currentStatus ||
       !currentTeam
     ) {
       alert("Todos os campos são obrigatórios!");
@@ -138,6 +136,7 @@ function ProjectForm({ addProject }) {
                   id="startDate"
                   label="Data de início"
                   value={currentStartDate}
+                  onChange={(event) => setCurrentStartDate(event)}
                 />
               </LocalizationProvider>
               <LocalizationProvider
@@ -148,6 +147,7 @@ function ProjectForm({ addProject }) {
                   id="endDate"
                   label="Data de finalização"
                   value={currentEndDate}
+                  onChange={(event) => setCurrentEndDate(event)}
                 />
               </LocalizationProvider>
               <LocalizationProvider
@@ -158,6 +158,7 @@ function ProjectForm({ addProject }) {
                   id="deadline"
                   label="Previsão de entrega"
                   value={currentDeadline}
+                  onChange={(event) => setCurrentDeadline(event)}
                 />
               </LocalizationProvider>
             </Box>

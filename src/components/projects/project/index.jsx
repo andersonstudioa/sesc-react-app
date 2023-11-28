@@ -25,10 +25,10 @@ function Project( {
     <>
       <Grid container>
         <Grid item xs={12} paddingBottom={2}>
-          <Typography variant='h5'>
+          <Typography variant='h5' marginRight={2} display="inline">
             {title}
           </Typography>
-          <Typography variant='body2'>
+          <Typography variant='body2' component="span" className={`task-${status}`}>
             {status}
           </Typography>
         </Grid>

@@ -4,7 +4,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { ptBR } from "date-fns/locale";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { Box, MenuItem, TextField } from "@mui/material";
+import { Box, MenuItem, TextField, Select, InputLabel, Input } from "@mui/material";
 
 function ProjectForm({ addProject }) {
   const [teams] = useState(dataTeams);
@@ -18,16 +18,15 @@ function ProjectForm({ addProject }) {
   const [currentTeam, setCurrentTeam] = useState("");
 
   const handleSubmit = (event) => {
+    alert ('currentTeam: ', currentTeam)
     event.preventDefault(); //Impede o navegador de recarregar a página
     //Validação dos campos
     if (
       !currentTitle ||
       !currentDescription ||
-      !currentStartDate ||
-      !currentEndDate ||
       !currentClient ||
-      !currentStatus ||
-      !currentTeam
+      !currentTeam ||
+      !currentDeadline
     ) {
       alert("Todos os campos são obrigatórios!");
       return;
@@ -94,13 +93,13 @@ function ProjectForm({ addProject }) {
               value={currentClient}
               onChange={(event) => setCurrentClient(event.target.value)}
             />
-            <TextField
-              select
+            <InputLabel shrink htmlFor="team">
+              Equipe
+            </InputLabel>
+            <Select
               fullWidth
-              label="Equipe"
-              name="team"
-              id="team"
               value={currentTeam}
+              input={<Input name="team" id="team" />}
               onChange={(event) => setCurrentTeam(event.target.value)}
             >
               <MenuItem value="">Selecione uma equipe</MenuItem>
@@ -112,7 +111,7 @@ function ProjectForm({ addProject }) {
                     </MenuItem>
                   );
                 })}
-            </TextField>
+            </Select>
             <Box sx={{
               display: 'flex',
               gap: {
@@ -138,6 +137,7 @@ function ProjectForm({ addProject }) {
                   id="startDate"
                   label="Data de início"
                   value={currentStartDate}
+                  onChange={(event) => setCurrentStartDate(event)}
                 />
               </LocalizationProvider>
               <LocalizationProvider
@@ -148,6 +148,7 @@ function ProjectForm({ addProject }) {
                   id="endDate"
                   label="Data de finalização"
                   value={currentEndDate}
+                  onChange={(event) => setCurrentEndDate(event)}
                 />
               </LocalizationProvider>
               <LocalizationProvider
@@ -158,6 +159,7 @@ function ProjectForm({ addProject }) {
                   id="deadline"
                   label="Previsão de entrega"
                   value={currentDeadline}
+                  onChange={(event) => setCurrentDeadline(event)}
                 />
               </LocalizationProvider>
             </Box>

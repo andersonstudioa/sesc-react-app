@@ -7,7 +7,7 @@ function ProjectsList( {projects, deleteProject} ) {
         <h1>Lista de Projetos</h1>
         <hr />
 
-        {/* INÍCIO DA TASK */}
+        {/* INÍCIO DO PROJETO */}
         {projects && projects.map((project) => {
           return(
             <Project
@@ -25,7 +25,7 @@ function ProjectsList( {projects, deleteProject} ) {
             />
           )
         })}
-        {/* FIM DA TASK */}
+        {/* FIM DO PROJETO */}
       </div>
     </section>
   )

@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useEffect, useState } from "react"
+import { createContext, useState } from "react"
 import dataTasks from '../../data/data-tasks.json'
 
 export const TaskContext = createContext({});
@@ -47,11 +47,6 @@ export const TasksProvider = ({
     const filteredTasks = newTasks.filter(task => task.id !== id ? task : null);
     setTasks(filteredTasks);
   }
-
-  useEffect(() => {
-    console.log('Entrou no useEffect')
-  },[]);
-
 
   return (
     <TaskContext.Provider value={{tasks, addTask, startTask, closeTask, deleteTask }}>

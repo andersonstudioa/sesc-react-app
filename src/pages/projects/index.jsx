@@ -5,7 +5,7 @@ import { ProjectContext } from '../../context/project-context';
 
 function ProjectsPage() {
 
-  const {projects, addProject, deleteProject } = useContext(ProjectContext);
+  const { projects, addProject, deleteProject } = useContext(ProjectContext);
 
   return (
     <>

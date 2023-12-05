@@ -16,6 +16,7 @@ function TasksList( {tasks, startTask, closeTask, deleteTask} ) {
               id={task.id}
               title={task.title}
               member={task.member}
+              project={task.project}
               category={task.category}
               status={task.status}
               startTask={startTask}

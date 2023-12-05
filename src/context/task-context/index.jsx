@@ -11,8 +11,8 @@ export const TasksProvider = ({
 
   const [tasks, setTasks] = useState(dataTasks);
 
-  const addTask = (title, category, member) => {
-    if(!title || !category || !member) return;
+  const addTask = (title, category, member, project) => {
+    if(!title || !category || !member || !project) return;
     const newTaskArray = [
       ...tasks,
       {
@@ -20,6 +20,7 @@ export const TasksProvider = ({
         title,
         category,
         member,
+        project,
         status: "todo"
       }
     ];

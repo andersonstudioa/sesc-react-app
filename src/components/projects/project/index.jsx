@@ -12,7 +12,8 @@ function Project( {
   startDate,
   endDate,
   status,
-  deleteProject
+  deleteProject,
+  editProject
   } ) {
   const [teams] = useState(dataTeams);
 
@@ -82,6 +83,9 @@ function Project( {
             <Grid item xs={2} display="flex" justifyContent="flex-end">
               <div className='task-actions'>
                 <button className='btn-delete' onClick={() => deleteProject(id)}>x</button>
+              </div>
+              <div className='task-actions'>
+                <button className='btn-edit' onClick={() => editProject(id)}>Editar</button>
               </div>
             </Grid>
           </Grid>

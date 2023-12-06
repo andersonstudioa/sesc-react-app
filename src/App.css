@@ -176,3 +176,23 @@ input, select, textarea {
   color: #FFFFFF;
   background-color: #f86484;
 }
+
+.btn-edit {
+  padding: 10px 30px;
+  margin: 5px 10px 5px 0px;
+  border: none;
+  border-radius: 20px;
+  transition: 0.5s;
+  cursor: pointer;
+  font-size: 0.825em;
+  font-weight: bold;
+  color: #ffae00; /* Cor do texto */
+  background-color: #fff4e6; /* Cor de fundo */
+  border: solid 1.5px #ffae00; /* Borda */
+}
+
+.btn-edit:hover {
+  color: #FFFFFF; /* Cor do texto ao passar o mouse */
+  background-color: #ffc107; /* Cor de fundo ao passar o mouse */
+}
+

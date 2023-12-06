@@ -1,27 +1,33 @@
 import dataCategories from '../../../data/data-categories.json';
 import dataMembers from '../../../data/data-members.json';
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import './style.css'
+import { ProjectContext } from '../../../context/project-context';
 
 function TaskForm ( {addTask} ) {
+
+  const { projects } = useContext(ProjectContext);
+
   const [categories] = useState(dataCategories);
   const [members] = useState(dataMembers);
   const [currentTask, setCurrentTask] = useState("");
   const [currentCategory, setCurrentCategory] = useState("");
   const [currentMember, setCurrentMember] = useState("");
+  const [currentProject, setCurrentProject] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault(); //Impede o navegador de recarregar a página
     //Validação dos campos
-    if(!currentTask || !currentCategory || !currentMember) {
+    if(!currentTask || !currentCategory || !currentMember || !currentProject) {
       alert("Todos os campos são obrigatórios!");
       return;
     }
     //Adicionar uma nova tarefa à lista de tarefas
-    addTask(currentTask, currentCategory, currentMember);
+    addTask(currentTask, currentCategory, currentMember, currentProject);
     setCurrentTask("");
     setCurrentCategory("");
     setCurrentMember("");
+    setCurrentProject("");
     alert("Tarefa cadastrada com sucesso!");
   }
 
@@ -62,7 +68,7 @@ function TaskForm ( {addTask} ) {
               )
             }))}
           </select>
-          <label htmlFor='member'>Membros</label>
+          <label htmlFor='member'>Membro</label>
           <select
             name='member'
             id='member'
@@ -78,6 +84,26 @@ function TaskForm ( {addTask} ) {
               return (
                 <React.Fragment key={member.id}>
                   <option value={member.profile}>{member.name}</option>
+                </React.Fragment>
+              )
+            })}
+          </select>
+          <label htmlFor='project'>Projeto</label>
+          <select
+            name='project'
+            id='project'
+            value={currentProject}
+            onChange={
+              (event) => {
+              setCurrentProject(event.target.value)
+              }
+            }
+          >
+            <option value="">Selecione um projeto</option>
+            {projects && projects.map((project) => {
+              return (
+                <React.Fragment key={project.id}>
+                  <option value={project.id}>{project.title}</option>
                 </React.Fragment>
               )
             })}

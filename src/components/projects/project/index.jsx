@@ -85,7 +85,7 @@ function Project( {
                 <button className='btn-delete' onClick={() => deleteProject(id)}>x</button>
               </div>
               <div className='task-actions'>
-                <button className='btn-edit' onClick={() => editProject(id)}>Editar</button>
+                <button className='btn-edit' onClick={() => editProject(id)}><i class="fas fa-pencil-alt"></i></button>
               </div>
             </Grid>
           </Grid>

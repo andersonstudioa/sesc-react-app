@@ -178,7 +178,7 @@ input, select, textarea {
 }
 
 .btn-edit {
-  padding: 10px 30px;
+  padding: 10px 14px;
   margin: 5px 10px 5px 0px;
   border: none;
   border-radius: 20px;
@@ -186,13 +186,13 @@ input, select, textarea {
   cursor: pointer;
   font-size: 0.825em;
   font-weight: bold;
-  color: #ffae00; /* Cor do texto */
-  background-color: #fff4e6; /* Cor de fundo */
-  border: solid 1.5px #ffae00; /* Borda */
+  color: #ffae00;
+  background-color: #fff4e6;
+  border: solid 1.5px #ffae00;
 }
 
 .btn-edit:hover {
-  color: #FFFFFF; /* Cor do texto ao passar o mouse */
-  background-color: #ffc107; /* Cor de fundo ao passar o mouse */
+  color: #FFFFFF;
+  background-color: #ffc107;
 }
 

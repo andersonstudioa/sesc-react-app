@@ -1,11 +1,13 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useEffect } from "react"
 import dataTasks from "../../data/data-tasks.json"
+import { categoriesApi } from "../../services/categories-api";
 
 export const TaskContext = createContext({});
 
 export const TaskProvider = ({children}) => {
 
   const [tasks, setTasks] = useState(dataTasks);
+  const [categories, setCategories] = useState(null);
 
   const addTask = (title, category, member, idProject) => {
     if(!title || !category || !member || !idProject) return;
@@ -44,9 +46,19 @@ export const TaskProvider = ({children}) => {
     const filteredTasks = newTasks.filter(task => task.id !== id ? task : null);
     setTasks(filteredTasks);
   }
+  
+  useEffect(() => {
+    const fetchDataCategories = async () => {
+      const cat = await categoriesApi.getCategories();
+      setCategories(cat);
+    }
+    if(categories === null) {
+      fetchDataCategories();
+    }
+  },[categories]);
 
   return (
-    <TaskContext.Provider value={{ tasks, addTask, startTask, closeTask, deleteTask }}>
+    <TaskContext.Provider value={{ tasks, categories, addTask, startTask, closeTask, deleteTask }}>
       {children}
     </TaskContext.Provider>
   );

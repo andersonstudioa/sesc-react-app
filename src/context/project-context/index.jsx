@@ -1,11 +1,17 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useEffect } from "react"
 import { format } from 'date-fns'
 import dataProjects from "../../data/data-projects.json"
 
 export const ProjectContext = createContext({});
 
+const API_KEY = import.meta.env.VITE_API_KEY;
+
 export const ProjectProvider = ({children}) => {
   const [projects, setProjects] = useState(dataProjects);
+
+  useEffect(() => {
+    console.log('API_KEY', API_KEY);
+  });
 
   const addProject = (
     title,

@@ -17,7 +17,7 @@ function Project( {
   const [teams] = useState(dataTeams);
 
   const getNameTeamById = (id) => {
-    const filteredTeam = teams.find((team) => team.id === id )
+    const filteredTeam = teams.find((team) => team.id === id );
     return filteredTeam.name;
   }
 

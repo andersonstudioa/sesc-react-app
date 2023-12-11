@@ -1,0 +1,60 @@
+.project {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0px;
+}
+
+.project-content {
+  width: 100%;
+  max-width: 330px;
+  padding: 10px;
+}
+
+.project-actions {
+  display: flex;
+  padding: 10px 0px;
+}
+
+.project-img-member {
+  border-radius: 50%;
+  width: 70px;
+}
+
+.project-title {
+  font-weight: bold;
+}
+
+.project-done,
+.project-doing,
+.project-todo,
+.project-category,
+.project-member {
+  border-radius: 20px;
+  padding: 5px 10px;
+  color: #ffffff;
+  margin-right: 8px;
+}
+
+.project-member {
+  color: #868686;
+  border: solid 1px #c9c9c9;
+}
+
+.project-category {
+  background-color: #c9c9c9;
+}
+
+.project-done {
+  background-color: #4ee755;
+}
+
+.project-doing {
+  background-color: #ffbf48;
+}
+
+.project-todo,
+.btn-register {
+  background-color: #51b4f7;
+  color: #ffffff;
+}

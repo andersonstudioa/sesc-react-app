@@ -176,3 +176,22 @@ input, select, textarea {
   color: #FFFFFF;
   background-color: #f86484;
 }
+
+.btn-edit {
+   padding: 10px 14px;
+   margin: 5px 10px 5px 0px;
+   border: none;
+   border-radius: 20px;
+   transition: 0.5s;
+   cursor: pointer;
+   font-size: 0.825em;
+   font-weight: bold;
+   color: #ffae00;
+   background-color: #fff4e6;
+   border: solid 1.5px #ffae00;
+ }
+
+ .btn-edit:hover {
+   color: #FFFFFF;
+   background-color: #ffc107;
+ }

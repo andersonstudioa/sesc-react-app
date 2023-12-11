@@ -1,12 +1,13 @@
 import dataTeams from "../../../data/data-teams.json";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { ptBR } from "date-fns/locale";
+import { format } from "date-fns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { Box, MenuItem, TextField } from "@mui/material";
+import { Box, Button, MenuItem, TextField, Typography } from "@mui/material";
 
-function ProjectForm({ addProject }) {
+function ProjectForm({ addProject, projectToBeEdited, setProjectToBeEdited }) {
   const [teams] = useState(dataTeams);
   const [currentTitle, setCurrentTitle] = useState("");
   const [currentDescription, setCurrentDescription] = useState("");
@@ -16,6 +17,17 @@ function ProjectForm({ addProject }) {
   const [currentClient, setCurrentClient] = useState("");
   const [currentStatus, setCurrentStatus] = useState("todo");
   const [currentTeam, setCurrentTeam] = useState("");
+
+  function clearFields() {
+    setCurrentTitle("");
+    setCurrentDescription("");
+    setCurrentStartDate(null);
+    setCurrentDeadline(null);
+    setCurrentEndDate(null);
+    setCurrentClient("");
+    setCurrentStatus("");
+    setCurrentTeam("");
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault(); //Impede o navegador de recarregar a página
@@ -30,6 +42,7 @@ function ProjectForm({ addProject }) {
       alert("Todos os campos são obrigatórios!");
       return;
     }
+
     //Adicionar uma nova tarefa à lista de tarefas
     addProject(
       currentTitle,
@@ -39,20 +52,78 @@ function ProjectForm({ addProject }) {
       currentEndDate,
       currentClient,
       currentStatus,
-      currentTeam
+      currentTeam,
     );
-    setCurrentTitle("");
-    setCurrentDescription("");
-    setCurrentStartDate(null);
-    setCurrentDeadline(null);
-    setCurrentEndDate(null);
-    setCurrentClient("");
-    setCurrentTitle("");
-    setCurrentStatus("");
-    setCurrentTeam("");
 
-    alert("Projeto cadastrado com sucesso!");
+    clearFields();
+
+    if (projectToBeEdited) {
+      alert("Projeto alterado com sucesso!");
+    } else {
+      alert("Projeto cadastrado com sucesso!");
+    }
   };
+
+  useEffect(() => {
+    if (projectToBeEdited) {
+      setCurrentTitle(projectToBeEdited.title);
+      setCurrentDescription(projectToBeEdited.description);
+      setCurrentClient(projectToBeEdited.client);
+      setCurrentStatus(projectToBeEdited.status);
+      setCurrentTeam(projectToBeEdited.idTeam);
+      setCurrentStartDate(projectToBeEdited.startDate ? new Date(projectToBeEdited.startDate) : null,);
+      setCurrentEndDate(projectToBeEdited.endDate ? new Date(projectToBeEdited.endDate) : null,);
+      setCurrentDeadline(new Date(projectToBeEdited.deadline));
+    }
+  }, [projectToBeEdited]);
+
+  let titleRegister, buttonCancel;
+  let buttonRegion;
+
+  buttonCancel = (
+    <Button
+      sx={{ borderRadius: 20, marginX: 2 }}
+      color="error"
+      variant="contained"
+      onClick={() => {
+        clearFields("");
+        setProjectToBeEdited(null);
+      }}
+    >
+      Cancelar
+    </Button>
+  );
+  const buttonRegister = (text) => (
+    <Button
+      sx={{ borderRadius: 20 }}
+      color="success"
+      variant="contained"
+      type="submit"
+    >
+    {text}
+    </Button>
+  );
+
+  if (projectToBeEdited) {
+    buttonRegion = (
+      <Box>
+        {buttonRegister("Confirmar")}
+        {buttonCancel}
+      </Box>
+    );
+    titleRegister = (
+      <h1>
+        Alterar Projeto
+      </h1>
+    );
+  } else {
+    buttonRegion = <Box>{buttonRegister("Cadastrar")}</Box>;
+    titleRegister = (
+      <h1>
+        Cadastrar Projeto
+      </h1>
+    );
+  }
 
   return (
     <section className="section-main">
@@ -62,7 +133,7 @@ function ProjectForm({ addProject }) {
             "& .MuiTextField-root": { marginY: 1 },
           }}
         >
-          <h1>Cadastrar projeto</h1>
+          {titleRegister}
           <hr />
           <form onSubmit={handleSubmit}>
             <TextField
@@ -111,23 +182,25 @@ function ProjectForm({ addProject }) {
                   );
                 })}
             </TextField>
-            <Box sx={{
-              display: 'flex',
-              gap: {
-                xs: '0',
-                sm: '0',
-                md: '1em',
-                lg: '1em',
-                xl: '1em',
-              },
-              flexDirection: {
-                xs: 'column',
-                sm: 'column',
-                md: 'row',
-                lg: 'row',
-                xl: 'row',
-              }
-              }}>
+            <Box
+              sx={{
+                display: "flex",
+                gap: {
+                  xs: "0",
+                  sm: "0",
+                  md: "1em",
+                  lg: "1em",
+                  xl: "1em",
+                },
+                flexDirection: {
+                  xs: "column",
+                  sm: "column",
+                  md: "row",
+                  lg: "row",
+                  xl: "row",
+                },
+              }}
+            >
               <LocalizationProvider
                 adapterLocale={ptBR}
                 dateAdapter={AdapterDateFns}
@@ -163,9 +236,7 @@ function ProjectForm({ addProject }) {
               </LocalizationProvider>
             </Box>
             <hr />
-            <button className="btn-register" type="submit">
-              Cadastrar
-            </button>
+            {buttonRegion}
           </form>
         </Box>
       </div>

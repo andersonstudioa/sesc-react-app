@@ -14,12 +14,11 @@ export const teamsApi = {
       });
       if (response.status == 200) {
         const result = await response.json();
-        console.log('result.data', result.data);
         return result.data;
       } else {
         return false
       }
     } 
     catch (error) { console.log(error); return false; }
-    }
+  }
 };

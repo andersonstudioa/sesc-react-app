@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { Grid, Typography } from '@mui/material';
-import dataTeams from "../../../data/data-teams.json";
+import { ProjectContext } from "../../../context/project-context"
 
 function Project( {
   id,
@@ -13,12 +13,13 @@ function Project( {
   endDate,
   status,
   deleteProject
-  } ) {
-  const [teams] = useState(dataTeams);
+  } ) {  
 
-  const getNameTeamById = (id) => {
-    const filteredTeam = teams.find((team) => team.id === id );
-    return filteredTeam.name;
+  const { teams } = useContext(ProjectContext);
+
+  const getNameTeamById = () => {
+    const filteredTeam = teams.find((team) => team.id === idTeam );
+    return filteredTeam.attributes.name;
   }
 
   return (
@@ -52,7 +53,7 @@ function Project( {
                 Equipe
               </Typography>
               <Typography variant='body2' fontWeight="bold">
-                {getNameTeamById(idTeam)}
+                {getNameTeamById()}
               </Typography>
             </Grid>
             <Grid item xs={2}>

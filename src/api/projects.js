@@ -20,5 +20,5 @@ export const projectsApi = {
       }
     } 
     catch (error) { console.log(error); return false; }
-    }
+  }
 };

@@ -1,15 +1,13 @@
-import dataCategories from '../../../data/data-categories.json';
-import dataMembers from '../../../data/data-members.json';
 import React, { useState, useContext } from 'react'
 import './style.css'
 import { ProjectContext } from '../../../context/project-context';
+import { TaskContext } from '../../../context/task-context';
 
 function TaskForm ( {addTask} ) {
 
   const { projects } = useContext(ProjectContext);
+  const { categories, members } = useContext(TaskContext);
 
-  const [categories] = useState(dataCategories);
-  const [members] = useState(dataMembers);
   const [currentTask, setCurrentTask] = useState("");
   const [currentCategory, setCurrentCategory] = useState("");
   const [currentMember, setCurrentMember] = useState("");
@@ -63,7 +61,7 @@ function TaskForm ( {addTask} ) {
             {categories && categories.map((category => {
               return (
                 <React.Fragment key={category.id}>
-                  <option value={category.title}>{category.title}</option>
+                  <option value={category.id}>{category.attributes.title}</option>
                 </React.Fragment>
               )
             }))}
@@ -83,7 +81,7 @@ function TaskForm ( {addTask} ) {
             {members && members.map((member) => {
               return (
                 <React.Fragment key={member.id}>
-                  <option value={member.profile}>{member.name}</option>
+                  <option value={member.id}>{member.attributes.name}</option>
                 </React.Fragment>
               )
             })}
@@ -103,7 +101,7 @@ function TaskForm ( {addTask} ) {
             {projects && projects.map((project) => {
               return (
                 <React.Fragment key={project.id}>
-                  <option value={project.id}>{project.title}</option>
+                  <option value={project.id}>{project.attributes.title}</option>
                 </React.Fragment>
               )
             })}

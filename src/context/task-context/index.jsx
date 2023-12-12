@@ -1,26 +1,34 @@
-import { createContext, useState } from "react"
-import dataTasks from "../../data/data-tasks.json"
+import { createContext, useState, useEffect } from "react";
+
+import { categoriesApi } from "../../api/categories";
+import { tasksApi } from "../../api/tasks";
+import { membersApi } from "../../api/members";
 
 export const TaskContext = createContext({});
 
 export const TaskProvider = ({children}) => {
 
-  const [tasks, setTasks] = useState(dataTasks);
+  const [tasks, setTasks] = useState(null);
+  const [categories, setCategories] = useState(null);
+  const [members, setMembers] = useState(null);
 
-  const addTask = (title, category, member, idProject) => {
-    if(!title || !category || !member || !idProject) return;
-    const newTaskArray = [
-      ...tasks,
-      {
-        id: Math.floor(Math.random() * 10000),
+  const addTask = async (title, idCategory, idMember, idProject) => {
+    if(!title || !idCategory || !idMember || !idProject) return;
+    const dataTask = {
+      data: {
         title,
-        category,
-        member,
-        idProject,
-        status: "todo"
+        status: "todo",
+        member: idMember,
+        category: idCategory,
+        project: idProject
       }
-    ];
-    setTasks(newTaskArray);
+    }
+    const result = await tasksApi.insertTask(dataTask);
+
+    if(result) {
+      const newTasksList = await tasksApi.getTasks();
+      setTasks(newTasksList);
+    }
   }
 
   const startTask = (id) => {
@@ -45,8 +53,46 @@ export const TaskProvider = ({children}) => {
     setTasks(filteredTasks);
   }
 
+  useEffect(() => {
+    const fetchDataTasks = async () => {
+      const result = await tasksApi.getTasks();
+      setTasks(result);
+    }
+    if(tasks === null) {
+      fetchDataTasks();
+    }
+  },[tasks]);
+
+  useEffect(() => {
+    const fetchDataCategories = async () => {
+      const result = await categoriesApi.getCategories();
+      setCategories(result);
+    }
+    if(categories === null) {
+      fetchDataCategories();
+    }
+  },[categories]);
+
+  useEffect(() => {
+    const fetchDataMembers = async () => {
+      const result = await membersApi.getMembers();
+      setMembers(result);
+    }
+    if(members === null) {
+      fetchDataMembers();
+    }
+  },[members]);
+
   return (
-    <TaskContext.Provider value={{ tasks, addTask, startTask, closeTask, deleteTask }}>
+    <TaskContext.Provider value={{
+      tasks,
+      categories,
+      members,
+      addTask,
+      startTask,
+      closeTask,
+      deleteTask
+    }}>
       {children}
     </TaskContext.Provider>
   );

@@ -14,11 +14,11 @@ function TasksList( {tasks, startTask, closeTask, deleteTask} ) {
             <Task
               key={task.id}
               id={task.id}
-              title={task.title}
-              member={task.member}
-              category={task.category}
-              idProject={task.idProject}
-              status={task.status}
+              title={task.attributes.title}
+              idMember={task.attributes.member.data.id}
+              idCategory={task.attributes.category.data.id}
+              idProject={task.attributes.project.data.id}
+              status={task.attributes.status}
               startTask={startTask}
               closeTask={closeTask}
               deleteTask={deleteTask}

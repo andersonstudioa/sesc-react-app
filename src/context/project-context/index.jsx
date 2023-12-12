@@ -1,11 +1,13 @@
-import { createContext, useState } from "react"
-import { format } from 'date-fns'
-import dataProjects from "../../data/data-projects.json"
+import { createContext, useState, useEffect } from "react";
+import { format } from 'date-fns';
+import { projectsApi } from "../../api/projects";
+import { teamsApi } from "../../api/teams";
 
 export const ProjectContext = createContext({});
 
 export const ProjectProvider = ({children}) => {
-  const [projects, setProjects] = useState(dataProjects);
+  const [projects, setProjects] = useState(null);
+  const [teams, setTeams] = useState(null);
 
   const addProject = (
     title,
@@ -41,8 +43,28 @@ export const ProjectProvider = ({children}) => {
     setProjects(filteredProjects);
   }
 
+  useEffect(() => {
+    const fetchDataProjects = async () => {
+      const result = await projectsApi.getProjects();
+      setProjects(result);
+    }
+    if(projects === null) {
+      fetchDataProjects();
+    }
+  },[projects]);
+
+  useEffect(() => {
+    const fetchDataTeams = async () => {
+      const result = await teamsApi.getTeams();
+      setTeams(result);
+    }
+    if(teams === null) {
+      fetchDataTeams();
+    }
+  },[teams]);
+
   return(
-    <ProjectContext.Provider value={{ projects, addProject, deleteProject }}>
+    <ProjectContext.Provider value={{ projects, teams, addProject, deleteProject }}>
       {children}
     </ProjectContext.Provider>
   );

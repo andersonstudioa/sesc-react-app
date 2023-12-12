@@ -7,18 +7,17 @@ function TasksList( {tasks, startTask, closeTask, deleteTask} ) {
       <div className='container-card'>
         <h1>Lista de tarefas</h1>
         <hr />
-
         {/* INÍCIO DA TASK */}
         {tasks && tasks.map((task) => {
           return(
             <Task
               key={task.id}
               id={task.id}
-              title={task.title}
-              member={task.member}
-              category={task.category}
-              idProject={task.idProject}
-              status={task.status}
+              title={task.attributes.title}
+              member={task.attributes.member.data.id}
+              category={task.attributes.category.data.id}
+              idProject={task.attributes.project.data.id}
+              status={task.attributes.status}
               startTask={startTask}
               closeTask={closeTask}
               deleteTask={deleteTask}

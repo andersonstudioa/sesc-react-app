@@ -1,17 +1,12 @@
 import { createContext, useState, useEffect } from "react"
 import { format } from 'date-fns'
-import dataProjects from "../../data/data-projects.json"
+//import dataProjects from "../../data/data-projects.json"
+import { projectsApi } from "../../api/projects";
 
 export const ProjectContext = createContext({});
 
-const API_KEY = import.meta.env.VITE_API_KEY;
-
 export const ProjectProvider = ({children}) => {
-  const [projects, setProjects] = useState(dataProjects);
-
-  useEffect(() => {
-    console.log('API_KEY', API_KEY);
-  });
+  const [projects, setProjects] = useState(null);
 
   const addProject = (
     title,
@@ -46,6 +41,16 @@ export const ProjectProvider = ({children}) => {
     const filteredProjects = newProjects.filter(project => project.id !== id ? project : null);
     setProjects(filteredProjects);
   }
+
+  useEffect(() => {
+    const fetchDataProjects = async () => {
+      const result = await projectsApi.getProjects();
+      setProjects(result);
+    }
+    if(projects === null) {
+      fetchDataProjects();
+    }
+  },[projects]);
 
   return(
     <ProjectContext.Provider value={{ projects, addProject, deleteProject }}>

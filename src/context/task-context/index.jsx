@@ -1,13 +1,16 @@
 import { createContext, useState, useEffect } from "react"
-import dataTasks from "../../data/data-tasks.json"
-import { categoriesApi } from "../../services/categories-api";
+//import dataTasks from "../../data/data-tasks.json"
+import { categoriesApi } from "../../api/categories";
+import { tasksApi } from "../../api/tasks";
+import { membersApi } from "../../api/members";
 
 export const TaskContext = createContext({});
 
 export const TaskProvider = ({children}) => {
 
-  const [tasks, setTasks] = useState(dataTasks);
+  const [tasks, setTasks] = useState(null);
   const [categories, setCategories] = useState(null);
+  const [members, setMembers] = useState(null);
 
   const addTask = (title, category, member, idProject) => {
     if(!title || !category || !member || !idProject) return;
@@ -48,17 +51,37 @@ export const TaskProvider = ({children}) => {
   }
   
   useEffect(() => {
+    const fetchDataTasks = async () => {
+      const result = await tasksApi.getTasks();
+      setTasks(result);
+    }
+    if(tasks === null) {
+      fetchDataTasks();
+    }
+  },[tasks]);
+
+  useEffect(() => {
     const fetchDataCategories = async () => {
-      const cat = await categoriesApi.getCategories();
-      setCategories(cat);
+      const result = await categoriesApi.getCategories();
+      setCategories(result);
     }
     if(categories === null) {
       fetchDataCategories();
     }
   },[categories]);
 
+  useEffect(() => {
+    const fetchDataMembers = async () => {
+      const result = await membersApi.getMembers();
+      setMembers(result);
+    }
+    if(members === null) {
+      fetchDataMembers();
+    }
+  },[members]);
+
   return (
-    <TaskContext.Provider value={{ tasks, categories, addTask, startTask, closeTask, deleteTask }}>
+    <TaskContext.Provider value={{ tasks, categories, members, addTask, startTask, closeTask, deleteTask }}>
       {children}
     </TaskContext.Provider>
   );

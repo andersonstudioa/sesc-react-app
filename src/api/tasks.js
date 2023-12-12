@@ -21,5 +21,25 @@ export const tasksApi = {
       }
     } 
     catch (error) { console.log(error); return false; }
-    }
+  },
+  async insertTask(data) {
+    console.log('insertTask data', data);
+    try {
+      const response = await fetch(API_URL + "tasks", {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          "content-type": "application/json",
+          "Authorization": `Bearer ${API_KEY}`,
+        },
+        body: JSON.stringify(data),
+      });
+      if (response.status == 200) {
+        return true;
+      } else {
+        return false;
+      }
+    } 
+    catch (error) { console.log(error); return false; }
+  },
 };

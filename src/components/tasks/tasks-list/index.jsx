@@ -14,8 +14,8 @@ function TasksList( {tasks, startTask, closeTask, deleteTask} ) {
               key={task.id}
               id={task.id}
               title={task.attributes.title}
-              member={task.attributes.member.data.id}
-              category={task.attributes.category.data.id}
+              idMember={task.attributes.member.data.id}
+              idCategory={task.attributes.category.data.id}
               idProject={task.attributes.project.data.id}
               status={task.attributes.status}
               startTask={startTask}

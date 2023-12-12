@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect } from "react"
-//import dataTasks from "../../data/data-tasks.json"
 import { categoriesApi } from "../../api/categories";
 import { tasksApi } from "../../api/tasks";
 import { membersApi } from "../../api/members";
@@ -12,20 +11,32 @@ export const TaskProvider = ({children}) => {
   const [categories, setCategories] = useState(null);
   const [members, setMembers] = useState(null);
 
-  const addTask = (title, category, member, idProject) => {
-    if(!title || !category || !member || !idProject) return;
+  const addTask = async (title, idCategory, idMember, idProject) => {
+    if(!title || !idCategory || !idMember || !idProject) return;
     const newTaskArray = [
       ...tasks,
       {
         id: Math.floor(Math.random() * 10000),
         title,
-        category,
-        member,
+        idCategory,
+        idMember,
         idProject,
         status: "todo"
       }
     ];
-    setTasks(newTaskArray);
+    const dataTask = {
+      data: {
+        title,
+        status: "todo",
+        member: idMember,
+        category: idCategory,
+        project: idProject
+      }
+    }
+    const result = await tasksApi.insertTask(dataTask);
+    if(result) {
+      setTasks(newTaskArray);
+    }
   }
 
   const startTask = (id) => {

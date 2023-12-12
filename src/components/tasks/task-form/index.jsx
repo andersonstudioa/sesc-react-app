@@ -62,7 +62,7 @@ function TaskForm ( {addTask} ) {
             {categories && categories.map((category => {
               return (
                 <React.Fragment key={category.id}>
-                  <option value={category.attributes.title}>{category.attributes.title}</option>
+                  <option value={category.id}>{category.attributes.title}</option>
                 </React.Fragment>
               )
             }))}
@@ -94,7 +94,7 @@ function TaskForm ( {addTask} ) {
             value={currentProject}
             onChange={
               (event) => {
-              setCurrentProject(event.target.value)
+              setCurrentProject(Number(event.target.value))
               }
             }
           >

@@ -13,17 +13,6 @@ export const TaskProvider = ({children}) => {
 
   const addTask = async (title, idCategory, idMember, idProject) => {
     if(!title || !idCategory || !idMember || !idProject) return;
-    const newTaskArray = [
-      ...tasks,
-      {
-        id: Math.floor(Math.random() * 10000),
-        title,
-        idCategory,
-        idMember,
-        idProject,
-        status: "todo"
-      }
-    ];
     const dataTask = {
       data: {
         title,
@@ -35,7 +24,8 @@ export const TaskProvider = ({children}) => {
     }
     const result = await tasksApi.insertTask(dataTask);
     if(result) {
-      setTasks(newTaskArray);
+      const result = await tasksApi.getTasks();
+      setTasks(result);
     }
   }
 

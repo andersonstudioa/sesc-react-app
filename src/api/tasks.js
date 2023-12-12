@@ -14,7 +14,6 @@ export const tasksApi = {
       });
       if (response.status == 200) {
         const result = await response.json();
-        console.log('result.data', result.data);
         return result.data;
       } else {
         return false
@@ -35,7 +34,7 @@ export const tasksApi = {
         body: JSON.stringify(data),
       });
       if (response.status == 200) {
-        return true;
+        return await response.json();
       } else {
         return false;
       }

@@ -1,23 +1,23 @@
 import { useState } from 'react'
 
 function TestUseState() {
+
   const [value, setValue] = useState(2);
 
   const handleAddTwo = () => {
-    setValue(value + 2 );
+    setValue(value + 2);
   }
 
   const [fruit, setFruit] = useState("");
-
+  
   const handleClickFruit = (currentFruit) => {
     setFruit(currentFruit);
   }
-
   return (
     <div style={{
-      backgroundColor: "#FFFFFF",
-      padding: 20,
-      textAlign: "center"
+      padding: "40px",
+      textAlign: "center",
+      backgroundColor: "#00FF00"
     }}>
       <button onClick={handleAddTwo}>Somar 2</button>
       <h1>O valor atual é {value}</h1>
@@ -29,10 +29,10 @@ function TestUseState() {
         <h1>Você clicou em {fruit}</h1>
       )}
       {!fruit && (
-        <h1>Escolha uma fruta</h1>
+        <h1>Clique em uma fruta</h1>
       )}
     </div>
   )
 }
 
-export default TestUseState;
+export default TestUseState

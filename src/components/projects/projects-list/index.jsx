@@ -1,6 +1,6 @@
 import Project from "../project";
 
-function ProjectsList( {projects, deleteProject} ) {
+function ProjectsList( {projects, deleteProject, editProject} ) {
   return (
     <section className='section-main'>
       <div className='container-card'>
@@ -22,6 +22,7 @@ function ProjectsList( {projects, deleteProject} ) {
               idTeam={project.idTeam}
               status={project.status}
               deleteProject={deleteProject}
+              editProject={editProject}
             />
           )
         })}

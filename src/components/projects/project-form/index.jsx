@@ -5,8 +5,12 @@ import { ptBR } from "date-fns/locale";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { Box, MenuItem, TextField } from "@mui/material";
+import { useContext } from "react";
+import { ProjectContext } from '../../../context/project-context';
 
 function ProjectForm({ addProject }) {
+  const {edit } = useContext(ProjectContext);
+
   const [teams] = useState(dataTeams);
   const [currentTitle, setCurrentTitle] = useState("");
   const [currentDescription, setCurrentDescription] = useState("");
@@ -70,7 +74,7 @@ function ProjectForm({ addProject }) {
               id="outlined-basic"
               label="Título"
               variant="outlined"
-              value={currentTitle}
+              value={ edit ? 'Editar' : currentTitle }
               onChange={(event) => setCurrentTitle(event.target.value)}
             />
             <TextField

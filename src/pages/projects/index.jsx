@@ -3,7 +3,7 @@ import { Footer, Header, ProjectForm, ProjectsList } from "../../components";
 import { ProjectContext } from '../../context/project-context';
 
 function ProjectsPage() {
-  const {projects, addProject, deleteProject } = useContext(ProjectContext);
+  const {projects, addProject, deleteProject, editProject } = useContext(ProjectContext);
   return (
     <>
       <Header />
@@ -11,6 +11,7 @@ function ProjectsPage() {
       <ProjectsList
         projects={projects}
         deleteProject={deleteProject}
+        editProject = {editProject}
       />
       <Footer />
     </>

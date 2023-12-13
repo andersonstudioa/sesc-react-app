@@ -31,26 +31,38 @@ export const TaskProvider = ({children}) => {
     }
   }
 
-  const startTask = (id) => {
-    const newTasks = [...tasks];
-    newTasks.map((task) => 
-      task.id === id ? (task.status = 'doing') : task
-    );
-    setTasks(newTasks);
+  const startTask = async (id) => {
+    const dataFetch = {
+      data: {
+        status: 'doing'
+      }
+    }
+    const result = await tasksApi.updateStatusTask(dataFetch, id);
+    if(result) {
+      const newTasksList = await tasksApi.getTasks();
+      setTasks(newTasksList);
+    }
   }
 
-  const closeTask = (id) => {
-    const newTasks = [...tasks];
-    newTasks.map((task) => 
-      task.id === id ? (task.status = 'done') : task
-    );
-    setTasks(newTasks);
+  const closeTask = async (id) => {
+    const dataFetch = {
+      data: {
+        status: 'done'
+      }
+    }
+    const result = await tasksApi.updateStatusTask(dataFetch, id);
+    if(result) {
+      const newTasksList = await tasksApi.getTasks();
+      setTasks(newTasksList);
+    }
   }
 
-  const deleteTask = (id) => {
-    const newTasks = [...tasks];
-    const filteredTasks = newTasks.filter(task => task.id !== id ? task : null);
-    setTasks(filteredTasks);
+  const deleteTask = async (id) => {
+    const result = await tasksApi.deleteTask(id);
+    if(result) {
+      const newTasksList = await tasksApi.getTasks();
+      setTasks(newTasksList);
+    }
   }
 
   useEffect(() => {
